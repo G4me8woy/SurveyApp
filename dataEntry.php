@@ -17,3 +17,22 @@ $questionnaires = [
     "How relevant was/were your industrial attachment(s)?",
     "If 'No', please provide reason(s) for your inability to undertake an industrial attachment ",
 ];
+
+
+$conn = mysqli_connect("localhost", "root", "", "survey");
+
+if ($conn !== false) {
+    echo "connected";
+    //for each question
+    foreach ($questionnaires as $question) {
+
+        
+        //insert into questions table
+        $feedback = mysqli_query($conn, "INSERT INTO questions (question) VALUES ('$question')");
+        
+        echo $feedback;
+        
+    }
+}else{
+    echo "not connected to database";
+}
